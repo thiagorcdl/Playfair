@@ -1,0 +1,43 @@
+Thiago R. C. de Lima	- GRR20105251
+Paulo M. D. Junior	- GRR20114281
+
+Trabalho 2 - Playfair
+
+CIFRAGEM
+         O programa "cript" espera uma palavra-chave de tamanho qualquer como argumento, contendo apenas letras, e um texto ASCII na entrada padrao.
+        Transforma todas as letras em minusculas, substitui os 'i' por 'j', tira espacos e pontuacoes, constroi a matriz 5x5 do alfabeto e separa letras repetidas com caractere de preenchimento 'x'. Por fim, faz as trocas das letras, pegando-as de duas em duas, de acordo com o algoritmo visto em sala. Se estiverem na mesma linha da matriz, faz um "shift" para a direita; se estiverem na mesma coluna, faz para baixo. O "cript" escreve no stderr uma versao parcial da cifragem, que e' basicamente o texto original com letras minusculas, sem espacos e pontos para posterior comparacao.
+
+DECIFRAGEM
+         O programa "decript" recebe como argumento uma palavra-chave e o texto cifrado na entrada padrao. O processo de decifragem e' basicamente o inverso da cifragem. A excecao e' que nao e' possivel recolocar os espacos e pontuacoes. Por isso, e' impossivel comparar com o texto original, dai o motivo de o "cript" salvar o texto parcial.
+
+EXECUCAO
+         Para compilar, basta digitar:
+                $ make
+         Exemplo para cifragem:
+                $ ./cript palavrachave < ./in/1.in > 1.cript 2>./parcial/1.parc
+         Exemplo para decifragem:
+                $ ./decript palavrachave < 1.cript
+
+AUTOMATIZACAO
+         Alternativamente, pode-se executar:
+                $ ./decript.sh 1.cript ./parcial/1.parc
+         Este script utiliza o dicionario seis.dict, um arquivo de texto com todas as palavras de seis letras da lingua portuguesa, de acordo com o dicionario do linux. Ele testa todas as palavras, gera a saida para cada uma em ./out/. O segundo argumento e' opcional. Caso esteja presente, o script fara um "diff" dos arquivos de saida com o texto parcial indicado. Caso seja omitido, ele apenas gerara todas saidas para um humano checar.
+
+ARQUIVOS
+        ./README
+                Este arquivo.
+        ./Makefile
+                Arquivo para compilacao.
+                Argumento opcional:
+                        clean - apaga tudo o que foi posteriormente gerado
+        .decript.sh
+                Script para automatizacao de decriptacao com palavras de seis letras.
+                Argumento opcional:
+                        parcial.txt - e' o texto parcial gerado pelo cript
+        ./cript.c
+                Codigo para o programa de cifragem.
+        ./decript.c
+                Codigo para o programa de decifragem.
+        ./in/{1..4}.in
+		Exemplos de entrada.
+                          
